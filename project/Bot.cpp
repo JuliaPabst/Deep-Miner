@@ -1,5 +1,5 @@
-//
-// Created by Julia Pabst on 26.03.24.
-//
-
 #include "Bot.h"
+Bot::Bot(BotType botType) : botType_(botType), points_(0) {}
+Bot::~Bot() = default;
+void Bot::place() {};
+void Bot::move() {};

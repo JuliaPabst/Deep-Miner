@@ -11,15 +11,15 @@ typedef enum BotType{
 
 class Bot {
 public:
-    Bot();
+    Bot(BotType botType);
     virtual ~Bot();
     virtual void act(Game game) = 0;
     void place();
     void move();
 private:
-    BotType botType;
-    vector <int> position;
-    int points;
+    BotType botType_;
+    vector <int> position_;
+    int points_;
 };
 
 
