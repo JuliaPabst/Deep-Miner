@@ -58,7 +58,12 @@ void Bot::move(Game& game) {
             position_[0]++;
         }
     }
-    position_[2] = findNewZ(game);
+
+    int newZ = findNewZ(game);
+
+    if (newZ >= 0){
+        position_[2] = findNewZ(game);
+    }
 };
 
 int Bot::findNewZ(Game& game){
@@ -66,6 +71,7 @@ int Bot::findNewZ(Game& game){
     while(game.getField()[position_[0]][position_[1]][newZ] == 0){
         newZ--;
     }
+
     return newZ;
 }
 
