@@ -21,11 +21,53 @@ void Bot::place() {
     position_[2] = z;
 };
 
-void Bot::move() {
+void Bot::move(Game& game) {
     char currentMove = ' ';
+
     std::cout << "Which move do you want to make? (up: w, left: a, down: s, right: d, stay: y" << std::endl;
     std::cin >> currentMove;
+
+    do{
+        std::cout << "This option is not available. Try again!" << std::endl;
+        std::cout << "Which move do you want to make? (up: w, left: a, down: s, right: d, stay: y" << std::endl;
+        std::cin >> currentMove;
+    } while (currentMove != 'w' && currentMove != 'a' && currentMove != 's' && currentMove != 'd' && currentMove != 'y');
+
+    if(currentMove == 'w'){
+        if (position_[1] == 0){
+            position_[1] = 4;
+        } else {
+            position_[1]--;
+        }
+    } else if (currentMove == 'a'){
+        if (position_[0] == 0){
+            position_[0] = 4;
+        } else {
+            position_[0]--;
+        }
+    } else if (currentMove == 's'){
+        if (position_[1] == 4){
+            position_[1] = 0;
+        } else {
+            position_[1]++;
+        }
+    } else if (currentMove == 'd'){
+        if (position_[0] == 4){
+            position_[0] = 0;
+        } else {
+            position_[0]++;
+        }
+    }
+    position_[2] = findNewZ(game);
 };
+
+int Bot::findNewZ(Game& game){
+    int newZ = game.getZ();
+    while(game.getField()[position_[0]][position_[1]][newZ] == 0){
+        newZ--;
+    }
+    return newZ;
+}
 
 void Bot::setBotType(BotType botType) {
     botType_ = botType;

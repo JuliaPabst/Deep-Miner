@@ -15,7 +15,8 @@ public:
     virtual ~Bot();
     virtual void act(Game& game) = 0;
     void place();
-    void move();
+    void move(Game& game);
+    int findNewZ(Game& game);
     void setBotType(BotType botType);
     void setPoints(int points);
 

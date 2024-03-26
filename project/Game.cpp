@@ -17,3 +17,11 @@ void Game::fillField() {
         }
     }
 }
+
+vector<vector<vector<int>>> Game::getField(){
+    return field_;
+};
+
+int Game::getZ(){
+    return z_;
+}

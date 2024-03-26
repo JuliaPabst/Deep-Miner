@@ -9,6 +9,8 @@ class Game {
 public:
     Game();
     void fillField();
+    vector<vector<vector<int>>> getField();
+    int getZ();
 
 private:
     int x_;
